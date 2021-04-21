@@ -183,6 +183,7 @@ class _MyHomePageState extends State<MyHomePage> {
     final thumbUrl = await _uploadFile(thumbFilePath, 'thumbnail');
     final videoUrl = await _uploadHLSFiles(encodedFilesDir, videoName);
 
+
     final videoInfo = VideoInfo(
       videoUrl: videoUrl,
       thumbUrl: thumbUrl,
@@ -191,6 +192,9 @@ class _MyHomePageState extends State<MyHomePage> {
       uploadedAt: DateTime.now().millisecondsSinceEpoch,
       videoName: videoName,
     );
+
+    print("videoInfo");
+    print(videoInfo);
 
     setState(() {
       _processPhase = 'Saving video metadata to cloud firestore';
@@ -225,6 +229,8 @@ class _MyHomePageState extends State<MyHomePage> {
     });
 
     try {
+      print( "print video file: " );
+      print( videoFile );
       await _processVideo(videoFile);
     } catch (e) {
       print('${e.toString()}');

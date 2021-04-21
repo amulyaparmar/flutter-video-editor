@@ -3,6 +3,19 @@ import 'package:flutter_video_sharing/models/video_info.dart';
 
 class FirebaseProvider {
   static saveVideo(VideoInfo video) async {
+    print("firebase info: ");
+    print(
+        {
+          'videoUrl': video.videoUrl,
+          'thumbUrl': video.thumbUrl,
+          'coverUrl': video.coverUrl,
+          'aspectRatio': video.aspectRatio,
+          'uploadedAt': video.uploadedAt,
+          'videoName': video.videoName,
+        }
+    );
+
+
     await Firestore.instance.collection('videos').document().setData({
         'videoUrl': video.videoUrl,
         'thumbUrl': video.thumbUrl,
